@@ -32,17 +32,17 @@ using System.Numerics;
 #endif
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json.Serialization;
+using Mapbox.Json.Serialization;
 using System.Reflection;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #endif
 #if !(DOTNET || PORTABLE40 || PORTABLE || UNITY3D)
 using System.Data.SqlTypes;
 
 #endif
 
-namespace Newtonsoft.Json.Utilities
+namespace Mapbox.Json.Utilities
 {
     internal enum PrimitiveTypeCode
     {

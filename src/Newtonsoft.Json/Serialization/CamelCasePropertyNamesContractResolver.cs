@@ -24,9 +24,9 @@
 #endregion
 
 using System.Globalization;
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 
-namespace Newtonsoft.Json.Serialization
+namespace Mapbox.Json.Serialization
 {
     /// <summary>
     /// Resolves member mappings for a type, camel casing property names.

@@ -28,8 +28,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Linq;
+using Mapbox.Json.Tests.TestObjects;
 #if NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -37,13 +37,13 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 
 #endif
 
-namespace Newtonsoft.Json.Tests.Serialization
+namespace Mapbox.Json.Tests.Serialization
 {
     [TestFixture]
     public class PreserveReferencesHandlingTests : TestFixtureBase
@@ -113,21 +113,21 @@ namespace Newtonsoft.Json.Tests.Serialization
 
             StringAssert.AreEqual(@"{
   ""$id"": ""1"",
-  ""$type"": ""Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+Container, Newtonsoft.Json.Tests"",
+  ""$type"": ""Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+Container, Mapbox.Json.Tests"",
   ""ListA"": {
     ""$id"": ""2"",
-    ""$type"": ""System.Collections.Generic.List`1[[Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+ContentA, Newtonsoft.Json.Tests]], mscorlib"",
+    ""$type"": ""System.Collections.Generic.List`1[[Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+ContentA, Mapbox.Json.Tests]], mscorlib"",
     ""$values"": [
       {
         ""$id"": ""3"",
-        ""$type"": ""Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+ContentB, Newtonsoft.Json.Tests"",
+        ""$type"": ""Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+ContentB, Mapbox.Json.Tests"",
         ""SomeValue"": true
       }
     ]
   },
   ""ListB"": {
     ""$id"": ""4"",
-    ""$type"": ""System.Collections.Generic.List`1[[Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+ContentA, Newtonsoft.Json.Tests]], mscorlib"",
+    ""$type"": ""System.Collections.Generic.List`1[[Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+ContentA, Mapbox.Json.Tests]], mscorlib"",
     ""$values"": [
       {
         ""$ref"": ""3""

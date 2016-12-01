@@ -30,13 +30,13 @@ using System.Globalization;
 using System.Text;
 using System.Reflection;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 #endif
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 
-namespace Newtonsoft.Json.Tests.TestObjects
+namespace Mapbox.Json.Tests.TestObjects
 {
 #if !(NETFX_CORE || NET35 || NET20 || PORTABLE || PORTABLE40)
     [TypeConverter(typeof(MyInterfaceConverter))]

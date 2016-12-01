@@ -26,12 +26,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 #if !UNITY3D
-using Newtonsoft.Json.Schema;
+using Mapbox.Json.Schema;
 #endif
 
-namespace Newtonsoft.Json
+namespace Mapbox.Json
 {
     /// <summary>
     /// Converts an object to and from JSON.

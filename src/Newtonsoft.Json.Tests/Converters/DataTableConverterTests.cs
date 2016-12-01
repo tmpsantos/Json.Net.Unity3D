@@ -25,8 +25,8 @@
 
 using System.IO;
 using System.Text;
-using Newtonsoft.Json.Bson;
-using Newtonsoft.Json.Linq;
+using Mapbox.Json.Bson;
+using Mapbox.Json.Linq;
 #if !(NETFX_CORE || PORTABLE || DNXCORE50 || PORTABLE40)
 using System;
 using System.Collections.Generic;
@@ -37,16 +37,16 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
 #if !NETFX_CORE
 using System.Data;
 #endif
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Tests.TestObjects;
 
-namespace Newtonsoft.Json.Tests.Converters
+namespace Mapbox.Json.Tests.Converters
 {
     public class DataTableConverterTests : TestFixtureBase
     {

@@ -30,7 +30,7 @@ using System.Xml;
 #endif
 using System.Globalization;
 
-namespace Newtonsoft.Json.Utilities
+namespace Mapbox.Json.Utilities
 {
     internal static class DateTimeUtils
     {

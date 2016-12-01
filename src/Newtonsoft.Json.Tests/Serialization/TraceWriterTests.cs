@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using Newtonsoft.Json.Linq;
+using Mapbox.Json.Linq;
 #if !(NET20 || NET35 || PORTABLE ||PORTABLE40)
 using System.Numerics;
 #endif
@@ -17,21 +17,21 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Converters;
+using Mapbox.Json.Serialization;
+using Mapbox.Json.Tests.TestObjects;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 
 #endif
 
-namespace Newtonsoft.Json.Tests.Serialization
+namespace Mapbox.Json.Tests.Serialization
 {
     public class Staff
     {
@@ -62,10 +62,10 @@ namespace Newtonsoft.Json.Tests.Serialization
                 traceWriter.Trace(TraceLevel.Error, "Error!", null);
                 traceWriter.Trace(TraceLevel.Off, "Off!", null);
 
-                StringAssert.AreEqual(@"Newtonsoft.Json Verbose: 0 : Verbose!
-Newtonsoft.Json Information: 0 : Info!
-Newtonsoft.Json Warning: 0 : Warning!
-Newtonsoft.Json Error: 0 : Error!
+                StringAssert.AreEqual(@"Mapbox.Json Verbose: 0 : Verbose!
+Mapbox.Json Information: 0 : Info!
+Mapbox.Json Warning: 0 : Warning!
+Mapbox.Json Error: 0 : Error!
 ", sw.ToString());
             }
             finally
@@ -138,12 +138,12 @@ Newtonsoft.Json Error: 0 : Error!
                 staff,
                 new JsonSerializerSettings { TraceWriter = traceWriter, Converters = { new JavaScriptDateTimeConverter() } });
 
-            // 2012-11-11T12:08:42.761 Info Started serializing Newtonsoft.Json.Tests.Serialization.Staff. Path ''.
-            // 2012-11-11T12:08:42.785 Info Started serializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
-            // 2012-11-11T12:08:42.791 Info Finished serializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
+            // 2012-11-11T12:08:42.761 Info Started serializing Mapbox.Json.Tests.Serialization.Staff. Path ''.
+            // 2012-11-11T12:08:42.785 Info Started serializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
+            // 2012-11-11T12:08:42.791 Info Finished serializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
             // 2012-11-11T12:08:42.797 Info Started serializing System.Collections.Generic.List`1[System.String]. Path 'Roles'.
             // 2012-11-11T12:08:42.798 Info Finished serializing System.Collections.Generic.List`1[System.String]. Path 'Roles'.
-            // 2012-11-11T12:08:42.799 Info Finished serializing Newtonsoft.Json.Tests.Serialization.Staff. Path ''.
+            // 2012-11-11T12:08:42.799 Info Finished serializing Mapbox.Json.Tests.Serialization.Staff. Path ''.
 
             MemoryTraceWriter memoryTraceWriter = (MemoryTraceWriter)traceWriter;
             string output = memoryTraceWriter.ToString();
@@ -197,12 +197,12 @@ Newtonsoft.Json Error: 0 : Error!
                     MetadataPropertyHandling = MetadataPropertyHandling.Default
                 });
 
-            // 2012-11-11T12:08:42.761 Info Started serializing Newtonsoft.Json.Tests.Serialization.Staff. Path ''.
-            // 2012-11-11T12:08:42.785 Info Started serializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
-            // 2012-11-11T12:08:42.791 Info Finished serializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
+            // 2012-11-11T12:08:42.761 Info Started serializing Mapbox.Json.Tests.Serialization.Staff. Path ''.
+            // 2012-11-11T12:08:42.785 Info Started serializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
+            // 2012-11-11T12:08:42.791 Info Finished serializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path 'StartDate'.
             // 2012-11-11T12:08:42.797 Info Started serializing System.Collections.Generic.List`1[System.String]. Path 'Roles'.
             // 2012-11-11T12:08:42.798 Info Finished serializing System.Collections.Generic.List`1[System.String]. Path 'Roles'.
-            // 2012-11-11T12:08:42.799 Info Finished serializing Newtonsoft.Json.Tests.Serialization.Staff. Path ''.
+            // 2012-11-11T12:08:42.799 Info Finished serializing Mapbox.Json.Tests.Serialization.Staff. Path ''.
             // 2013-05-19T00:07:24.360 Verbose Deserialized JSON: 
             // {
             //   "Name": "Arnie Admin",
@@ -274,7 +274,7 @@ Newtonsoft.Json Error: 0 : Error!
                         Formatting = Formatting.Indented
                     });
 
-            Assert.AreEqual("Started serializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path ''.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Started serializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path ''.", traceWriter.TraceRecords[0].Message);
             Assert.AreEqual("Started serializing System.Collections.Generic.List`1[System.Int32]. Path 'IntList'.", traceWriter.TraceRecords[1].Message);
             Assert.AreEqual("Finished serializing System.Collections.Generic.List`1[System.Int32]. Path 'IntList'.", traceWriter.TraceRecords[2].Message);
             Assert.AreEqual("Started serializing System.String[]. Path 'StringArray'.", traceWriter.TraceRecords[3].Message);
@@ -283,7 +283,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.AreEqual("Finished serializing System.Version. Path 'Version'.", traceWriter.TraceRecords[6].Message);
             Assert.AreEqual("Started serializing System.Collections.Generic.Dictionary`2[System.String,System.String]. Path 'StringDictionary'.", traceWriter.TraceRecords[7].Message);
             Assert.AreEqual("Finished serializing System.Collections.Generic.Dictionary`2[System.String,System.String]. Path 'StringDictionary'.", traceWriter.TraceRecords[8].Message);
-            Assert.AreEqual("Finished serializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path ''.", traceWriter.TraceRecords[9].Message);
+            Assert.AreEqual("Finished serializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path ''.", traceWriter.TraceRecords[9].Message);
 
             Assert.IsFalse(traceWriter.TraceRecords.Any(r => r.Level == TraceLevel.Verbose));
         }
@@ -333,7 +333,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.AreEqual(3, o2.StringDictionary.Count);
             Assert.AreEqual(1.1d, o2.Double);
 
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path 'IntList', line 2, position 12.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path 'IntList', line 2, position 12.", traceWriter.TraceRecords[0].Message);
             Assert.AreEqual("Started deserializing System.Collections.Generic.IList`1[System.Int32]. Path 'IntList', line 2, position 14.", traceWriter.TraceRecords[1].Message);
             Assert.IsTrue(traceWriter.TraceRecords[2].Message.StartsWith("Finished deserializing System.Collections.Generic.IList`1[System.Int32]. Path 'IntList'"));
             Assert.AreEqual("Started deserializing System.String[]. Path 'StringArray', line 6, position 18.", traceWriter.TraceRecords[3].Message);
@@ -343,7 +343,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.IsTrue(traceWriter.TraceRecords[7].Message.StartsWith("Finished deserializing System.Version. Path 'Version'"));
             Assert.AreEqual("Started deserializing System.Collections.Generic.IDictionary`2[System.String,System.String]. Path 'StringDictionary.1', line 19, position 8.", traceWriter.TraceRecords[8].Message);
             Assert.IsTrue(traceWriter.TraceRecords[9].Message.StartsWith("Finished deserializing System.Collections.Generic.IDictionary`2[System.String,System.String]. Path 'StringDictionary'"));
-            Assert.IsTrue(traceWriter.TraceRecords[10].Message.StartsWith("Finished deserializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path ''"));
+            Assert.IsTrue(traceWriter.TraceRecords[10].Message.StartsWith("Finished deserializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path ''"));
 
             Assert.IsFalse(traceWriter.TraceRecords.Any(r => r.Level == TraceLevel.Verbose));
         }
@@ -396,7 +396,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.AreEqual(3, o2.StringDictionary.Count);
             Assert.AreEqual(1.1d, o2.Double);
 
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path 'IntList', line 2, position 12.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path 'IntList', line 2, position 12.", traceWriter.TraceRecords[0].Message);
             Assert.AreEqual("Started deserializing System.Collections.Generic.IList`1[System.Int32]. Path 'IntList', line 2, position 14.", traceWriter.TraceRecords[1].Message);
             Assert.IsTrue(traceWriter.TraceRecords[2].Message.StartsWith("Finished deserializing System.Collections.Generic.IList`1[System.Int32]. Path 'IntList'"));
             Assert.AreEqual("Started deserializing System.String[]. Path 'StringArray', line 6, position 18.", traceWriter.TraceRecords[3].Message);
@@ -406,7 +406,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.IsTrue(traceWriter.TraceRecords[7].Message.StartsWith("Finished deserializing System.Version. Path 'Version'"));
             Assert.AreEqual("Started deserializing System.Collections.Generic.IDictionary`2[System.String,System.String]. Path 'StringDictionary.1', line 19, position 8.", traceWriter.TraceRecords[8].Message);
             Assert.IsTrue(traceWriter.TraceRecords[9].Message.StartsWith("Finished deserializing System.Collections.Generic.IDictionary`2[System.String,System.String]. Path 'StringDictionary'"));
-            Assert.IsTrue(traceWriter.TraceRecords[10].Message.StartsWith("Finished deserializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path ''"));
+            Assert.IsTrue(traceWriter.TraceRecords[10].Message.StartsWith("Finished deserializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path ''"));
 
             Assert.IsFalse(traceWriter.TraceRecords.Any(r => r.Level == TraceLevel.Verbose));
         }
@@ -434,10 +434,10 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.AreEqual(2, traceWriter.TraceRecords.Count);
 
             Assert.AreEqual(TraceLevel.Info, traceWriter.TraceRecords[0].Level);
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.Serialization.IntegerTestClass. Path 'Integer', line 1, position 11.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.Serialization.IntegerTestClass. Path 'Integer', line 1, position 11.", traceWriter.TraceRecords[0].Message);
 
             Assert.AreEqual(TraceLevel.Error, traceWriter.TraceRecords[1].Level);
-            Assert.AreEqual("Error deserializing Newtonsoft.Json.Tests.Serialization.IntegerTestClass. Could not convert string to integer: hi. Path 'Integer', line 1, position 15.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("Error deserializing Mapbox.Json.Tests.Serialization.IntegerTestClass. Could not convert string to integer: hi. Path 'Integer', line 1, position 15.", traceWriter.TraceRecords[1].Message);
         }
 
         [Test]
@@ -463,7 +463,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.AreEqual(3, traceWriter.TraceRecords.Count);
 
             Assert.AreEqual(TraceLevel.Info, traceWriter.TraceRecords[0].Level);
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.Serialization.TraceTestObject. Path 'IntList', line 1, position 11.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.Serialization.TraceTestObject. Path 'IntList', line 1, position 11.", traceWriter.TraceRecords[0].Message);
 
             Assert.AreEqual(TraceLevel.Info, traceWriter.TraceRecords[1].Level);
             Assert.AreEqual("Started deserializing System.Collections.Generic.IList`1[System.Int32]. Path 'IntList', line 1, position 12.", traceWriter.TraceRecords[1].Message);
@@ -493,9 +493,9 @@ Newtonsoft.Json Error: 0 : Error!
                     TraceWriter = traceWriter
                 });
 
-            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Writing object reference Id '1' for Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path ''."));
-            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Writing object reference Id '2' for Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'other'."));
-            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Writing object reference to Id '1' for Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'self'."));
+            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Writing object reference Id '1' for Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path ''."));
+            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Writing object reference Id '2' for Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'other'."));
+            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Writing object reference to Id '1' for Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'self'."));
         }
 
         [Test]
@@ -525,9 +525,9 @@ Newtonsoft.Json Error: 0 : Error!
                     TraceWriter = traceWriter
                 });
 
-            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Read object reference Id '1' for Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'other', line 3, position 10."));
-            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Read object reference Id '2' for Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'other.blah', line 5, position 11."));
-            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message.StartsWith("Resolved object reference '1' to Newtonsoft.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'self'")));
+            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Read object reference Id '1' for Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'other', line 3, position 10."));
+            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message == "Read object reference Id '2' for Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'other.blah', line 5, position 11."));
+            Assert.IsTrue(traceWriter.TraceRecords.Any(r => r.Message.StartsWith("Resolved object reference '1' to Mapbox.Json.Tests.Serialization.PreserveReferencesHandlingTests+CircularDictionary. Path 'self'")));
         }
 
         [Test]
@@ -581,8 +581,8 @@ Newtonsoft.Json Error: 0 : Error!
             });
 
             Assert.AreEqual("Started serializing System.Collections.Generic.List`1[System.DateTime]. Path ''.", traceWriter.TraceRecords[0].Message);
-            Assert.AreEqual("Started serializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path ''.", traceWriter.TraceRecords[1].Message);
-            Assert.AreEqual("Finished serializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path '[0]'.", traceWriter.TraceRecords[2].Message);
+            Assert.AreEqual("Started serializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path ''.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("Finished serializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path '[0]'.", traceWriter.TraceRecords[2].Message);
             Assert.AreEqual("Finished serializing System.Collections.Generic.List`1[System.DateTime]. Path ''.", traceWriter.TraceRecords[3].Message);
         }
 
@@ -606,8 +606,8 @@ Newtonsoft.Json Error: 0 : Error!
                 });
 
             Assert.AreEqual("Started deserializing System.Collections.Generic.List`1[System.DateTime]. Path '', line 1, position 1.", traceWriter.TraceRecords[0].Message);
-            Assert.AreEqual("Started deserializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path '[0]', line 1, position 10.", traceWriter.TraceRecords[1].Message);
-            Assert.AreEqual("Finished deserializing System.DateTime with converter Newtonsoft.Json.Converters.JavaScriptDateTimeConverter. Path '[0]', line 1, position 23.", traceWriter.TraceRecords[2].Message);
+            Assert.AreEqual("Started deserializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path '[0]', line 1, position 10.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("Finished deserializing System.DateTime with converter Mapbox.Json.Converters.JavaScriptDateTimeConverter. Path '[0]', line 1, position 23.", traceWriter.TraceRecords[2].Message);
             Assert.AreEqual("Finished deserializing System.Collections.Generic.List`1[System.DateTime]. Path '', line 1, position 24.", traceWriter.TraceRecords[3].Message);
         }
 
@@ -698,9 +698,9 @@ Newtonsoft.Json Error: 0 : Error!
                     TraceWriter = traceWriter
                 });
 
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.TestObjects.Person. Path 'MissingMemberProperty', line 1, position 25.", traceWriter.TraceRecords[0].Message);
-            Assert.AreEqual("Could not find member 'MissingMemberProperty' on Newtonsoft.Json.Tests.TestObjects.Person. Path 'MissingMemberProperty', line 1, position 25.", traceWriter.TraceRecords[1].Message);
-            Assert.IsTrue(traceWriter.TraceRecords[2].Message.StartsWith("Finished deserializing Newtonsoft.Json.Tests.TestObjects.Person. Path ''"));
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.TestObjects.Person. Path 'MissingMemberProperty', line 1, position 25.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Could not find member 'MissingMemberProperty' on Mapbox.Json.Tests.TestObjects.Person. Path 'MissingMemberProperty', line 1, position 25.", traceWriter.TraceRecords[1].Message);
+            Assert.IsTrue(traceWriter.TraceRecords[2].Message.StartsWith("Finished deserializing Mapbox.Json.Tests.TestObjects.Person. Path ''"));
         }
 
         [Test]
@@ -750,7 +750,7 @@ Newtonsoft.Json Error: 0 : Error!
             Assert.IsNotNull(c);
             Assert.AreEqual(1, c.Name);
 
-            Assert.AreEqual("Deserializing Newtonsoft.Json.Tests.TestObjects.PublicParameterizedConstructorWithPropertyNameConflictWithAttribute using creator with parameters: name. Path 'name', line 1, position 6.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("Deserializing Mapbox.Json.Tests.TestObjects.PublicParameterizedConstructorWithPropertyNameConflictWithAttribute using creator with parameters: name. Path 'name', line 1, position 6.", traceWriter.TraceRecords[0].Message);
         }
 
         [Test]
@@ -768,7 +768,7 @@ Newtonsoft.Json Error: 0 : Error!
 
             JsonConvert.SerializeObject(c, new JsonSerializerSettings { TraceWriter = traceWriter });
 
-            Assert.AreEqual("ShouldSerialize result for property 'Name' on Newtonsoft.Json.Tests.Serialization.ShouldSerializeTestClass: True. Path ''.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("ShouldSerialize result for property 'Name' on Mapbox.Json.Tests.Serialization.ShouldSerializeTestClass: True. Path ''.", traceWriter.TraceRecords[1].Message);
             Assert.AreEqual(TraceLevel.Verbose, traceWriter.TraceRecords[1].Level);
 
             traceWriter = new InMemoryTraceWriter
@@ -780,7 +780,7 @@ Newtonsoft.Json Error: 0 : Error!
 
             JsonConvert.SerializeObject(c, new JsonSerializerSettings { TraceWriter = traceWriter });
 
-            Assert.AreEqual("ShouldSerialize result for property 'Name' on Newtonsoft.Json.Tests.Serialization.ShouldSerializeTestClass: False. Path ''.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("ShouldSerialize result for property 'Name' on Mapbox.Json.Tests.Serialization.ShouldSerializeTestClass: False. Path ''.", traceWriter.TraceRecords[1].Message);
             Assert.AreEqual(TraceLevel.Verbose, traceWriter.TraceRecords[1].Level);
         }
 
@@ -799,12 +799,12 @@ Newtonsoft.Json Error: 0 : Error!
 
             string json = JsonConvert.SerializeObject(c, Formatting.Indented, new JsonSerializerSettings { TraceWriter = traceWriter });
 
-            Assert.AreEqual("Started serializing Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass. Path ''.", traceWriter.TraceRecords[0].Message);
-            Assert.AreEqual("IsSpecified result for property 'Name' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass: False. Path ''.", traceWriter.TraceRecords[1].Message);
-            Assert.AreEqual("IsSpecified result for property 'Weight' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass: False. Path 'Age'.", traceWriter.TraceRecords[2].Message);
-            Assert.AreEqual("IsSpecified result for property 'Height' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass: False. Path 'Age'.", traceWriter.TraceRecords[3].Message);
-            Assert.AreEqual("IsSpecified result for property 'FavoriteNumber' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass: False. Path 'Age'.", traceWriter.TraceRecords[4].Message);
-            Assert.AreEqual("Finished serializing Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass. Path ''.", traceWriter.TraceRecords[5].Message);
+            Assert.AreEqual("Started serializing Mapbox.Json.Tests.Serialization.SpecifiedTestClass. Path ''.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("IsSpecified result for property 'Name' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass: False. Path ''.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("IsSpecified result for property 'Weight' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass: False. Path 'Age'.", traceWriter.TraceRecords[2].Message);
+            Assert.AreEqual("IsSpecified result for property 'Height' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass: False. Path 'Age'.", traceWriter.TraceRecords[3].Message);
+            Assert.AreEqual("IsSpecified result for property 'FavoriteNumber' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass: False. Path 'Age'.", traceWriter.TraceRecords[4].Message);
+            Assert.AreEqual("Finished serializing Mapbox.Json.Tests.Serialization.SpecifiedTestClass. Path ''.", traceWriter.TraceRecords[5].Message);
 
             StringAssert.AreEqual(@"{
   ""Age"": 27
@@ -817,8 +817,8 @@ Newtonsoft.Json Error: 0 : Error!
 
             SpecifiedTestClass deserialized = JsonConvert.DeserializeObject<SpecifiedTestClass>(json, new JsonSerializerSettings { TraceWriter = traceWriter });
 
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass. Path 'Age', line 2, position 8.", traceWriter.TraceRecords[0].Message);
-            Assert.IsTrue(traceWriter.TraceRecords[1].Message.StartsWith("Finished deserializing Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass. Path ''"));
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.Serialization.SpecifiedTestClass. Path 'Age', line 2, position 8.", traceWriter.TraceRecords[0].Message);
+            Assert.IsTrue(traceWriter.TraceRecords[1].Message.StartsWith("Finished deserializing Mapbox.Json.Tests.Serialization.SpecifiedTestClass. Path ''"));
 
             Assert.IsNull(deserialized.Name);
             Assert.IsFalse(deserialized.NameSpecified);
@@ -848,11 +848,11 @@ Newtonsoft.Json Error: 0 : Error!
 
             deserialized = JsonConvert.DeserializeObject<SpecifiedTestClass>(json, new JsonSerializerSettings { TraceWriter = traceWriter });
 
-            Assert.AreEqual("Started deserializing Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass. Path 'Name', line 2, position 9.", traceWriter.TraceRecords[0].Message);
-            Assert.AreEqual("IsSpecified for property 'Name' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass set to true. Path 'Name', line 2, position 17.", traceWriter.TraceRecords[1].Message);
-            Assert.AreEqual("IsSpecified for property 'Weight' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass set to true. Path 'Weight', line 4, position 13.", traceWriter.TraceRecords[2].Message);
-            Assert.AreEqual("IsSpecified for property 'Height' on Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass set to true. Path 'Height', line 5, position 13.", traceWriter.TraceRecords[3].Message);
-            Assert.IsTrue(traceWriter.TraceRecords[4].Message.StartsWith("Finished deserializing Newtonsoft.Json.Tests.Serialization.SpecifiedTestClass. Path ''"));
+            Assert.AreEqual("Started deserializing Mapbox.Json.Tests.Serialization.SpecifiedTestClass. Path 'Name', line 2, position 9.", traceWriter.TraceRecords[0].Message);
+            Assert.AreEqual("IsSpecified for property 'Name' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass set to true. Path 'Name', line 2, position 17.", traceWriter.TraceRecords[1].Message);
+            Assert.AreEqual("IsSpecified for property 'Weight' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass set to true. Path 'Weight', line 4, position 13.", traceWriter.TraceRecords[2].Message);
+            Assert.AreEqual("IsSpecified for property 'Height' on Mapbox.Json.Tests.Serialization.SpecifiedTestClass set to true. Path 'Height', line 5, position 13.", traceWriter.TraceRecords[3].Message);
+            Assert.IsTrue(traceWriter.TraceRecords[4].Message.StartsWith("Finished deserializing Mapbox.Json.Tests.Serialization.SpecifiedTestClass. Path ''"));
 
             Assert.AreEqual("James", deserialized.Name);
             Assert.IsTrue(deserialized.NameSpecified);

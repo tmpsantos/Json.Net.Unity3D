@@ -2,6 +2,6 @@
   "#base": "JsonNet.base.json",
   "id": "JsonNet-Lite",
   "files": [
-    "../Newtonsoft.Json/bin/ReleaseLite/Newtonsoft.Json.dll"
+    "../Mapbox.Json/bin/ReleaseLite/Mapbox.Json.dll"
   ]
 }

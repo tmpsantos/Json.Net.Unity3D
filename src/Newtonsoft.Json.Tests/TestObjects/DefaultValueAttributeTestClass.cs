@@ -25,7 +25,7 @@
 
 using System.ComponentModel;
 
-namespace Newtonsoft.Json.Tests.TestObjects
+namespace Mapbox.Json.Tests.TestObjects
 {
 #if !(NETFX_CORE || DNXCORE50)
     [Description("DefaultValueAttributeTestClass description!")]

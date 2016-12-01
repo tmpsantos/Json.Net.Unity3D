@@ -27,8 +27,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Linq;
+using Mapbox.Json.Tests.TestObjects;
 #if NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -36,13 +36,13 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 
 #endif
 
-namespace Newtonsoft.Json.Tests.Serialization
+namespace Mapbox.Json.Tests.Serialization
 {
     [TestFixture]
     public class ExtensionDataTests : TestFixtureBase
@@ -610,7 +610,7 @@ namespace Newtonsoft.Json.Tests.Serialization
   ""Name"": ""Name!"",
   ""Test"": 1,
   ""Self"": {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",
     ""HourlyWage"": 2.0,
     ""Name"": null,
     ""BirthDate"": ""0001-01-01T00:00:00"",
@@ -638,7 +638,7 @@ namespace Newtonsoft.Json.Tests.Serialization
   ""Name"": ""Name!"",
   ""Test"": 1,
   ""Self"": {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",
     ""HourlyWage"": 2.0,
     ""Name"": null,
     ""BirthDate"": ""0001-01-01T00:00:00"",
@@ -682,10 +682,10 @@ namespace Newtonsoft.Json.Tests.Serialization
             });
 
             StringAssert.AreEqual(@"{
-  ""$type"": ""Newtonsoft.Json.Tests.Serialization.ExtensionDataTests+PublicExtensionDataAttributeTestClass, Newtonsoft.Json.Tests"",
+  ""$type"": ""Mapbox.Json.Tests.Serialization.ExtensionDataTests+PublicExtensionDataAttributeTestClass, Mapbox.Json.Tests"",
   ""Name"": ""Name!"",
   ""Test"": {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",
     ""HourlyWage"": 2.1,
     ""Name"": null,
     ""BirthDate"": ""0001-01-01T00:00:00"",
@@ -844,7 +844,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             }
             catch (JsonSerializationException ex)
             {
-                Assert.AreEqual("Error setting value in extension data for type 'Newtonsoft.Json.Tests.Serialization.ExtensionDataTests+DocNoSetter'. Path 'Property1', line 1, position 39.", ex.Message);
+                Assert.AreEqual("Error setting value in extension data for type 'Mapbox.Json.Tests.Serialization.ExtensionDataTests+DocNoSetter'. Path 'Property1', line 1, position 39.", ex.Message);
                 Assert.AreEqual("Cannot set value onto extension data member 'Content'. The extension data collection is null and it cannot be set.", ex.InnerException.Message);
             }
         }
@@ -863,7 +863,7 @@ namespace Newtonsoft.Json.Tests.Serialization
         {
             ExceptionAssert.Throws<JsonException>(
                 () => { JsonConvert.SerializeObject(new DocNoGetter()); },
-                "Invalid extension data attribute on 'Newtonsoft.Json.Tests.Serialization.ExtensionDataTests+DocNoGetter'. Member 'Content' must have a getter.");
+                "Invalid extension data attribute on 'Mapbox.Json.Tests.Serialization.ExtensionDataTests+DocNoGetter'. Member 'Content' must have a getter.");
         }
 
         public class Item

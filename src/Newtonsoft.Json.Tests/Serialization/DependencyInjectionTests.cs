@@ -25,8 +25,8 @@
 
 #if !(NET40 || NET35 || NET20 || DNXCORE50 || PORTABLE || PORTABLE40 || NETFX_CORE)
 using Autofac;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Serialization;
+using Mapbox.Json.Tests.TestObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +40,13 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 
 #endif
 
-namespace Newtonsoft.Json.Tests.Serialization
+namespace Mapbox.Json.Tests.Serialization
 {
     public interface IBase
     {

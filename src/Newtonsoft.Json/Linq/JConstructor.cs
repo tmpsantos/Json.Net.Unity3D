@@ -28,10 +28,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 using System.Globalization;
 
-namespace Newtonsoft.Json.Linq
+namespace Mapbox.Json.Linq
 {
     /// <summary>
     /// Represents a JSON constructor.

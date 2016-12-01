@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Tests.TestObjects;
 #if !(NET20 || NET35 || PORTABLE)
 using System.Numerics;
 #endif
@@ -39,20 +39,20 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Linq;
+using Mapbox.Json.Linq;
 using System.Globalization;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 #endif
-using Newtonsoft.Json.Tests.Serialization;
+using Mapbox.Json.Tests.Serialization;
 
-namespace Newtonsoft.Json.Tests.Linq
+namespace Mapbox.Json.Tests.Linq
 {
     [TestFixture]
     public class JValueTests : TestFixtureBase
@@ -267,7 +267,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JValue v = new JValue(true);
                 JToken last = v.Last;
-            }, "Cannot access child value on Newtonsoft.Json.Linq.JValue.");
+            }, "Cannot access child value on Mapbox.Json.Linq.JValue.");
         }
 
         [Test]
@@ -285,7 +285,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JValue v = new JValue(true);
                 JToken first = v.First;
-            }, "Cannot access child value on Newtonsoft.Json.Linq.JValue.");
+            }, "Cannot access child value on Mapbox.Json.Linq.JValue.");
         }
 
         [Test]
@@ -295,7 +295,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JValue v = new JValue(true);
                 JToken first = v[0];
-            }, "Cannot access child value on Newtonsoft.Json.Linq.JValue.");
+            }, "Cannot access child value on Mapbox.Json.Linq.JValue.");
         }
 
         [Test]
@@ -305,7 +305,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JValue v = new JValue(true);
                 v.Values<int>();
-            }, "Cannot access child value on Newtonsoft.Json.Linq.JValue.");
+            }, "Cannot access child value on Mapbox.Json.Linq.JValue.");
         }
 
         [Test]
@@ -360,7 +360,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JToken t = new JValue(5L);
                 t[0] = new JValue(3);
-            }, "Cannot set child value on Newtonsoft.Json.Linq.JValue.");
+            }, "Cannot set child value on Mapbox.Json.Linq.JValue.");
         }
 
         [Test]

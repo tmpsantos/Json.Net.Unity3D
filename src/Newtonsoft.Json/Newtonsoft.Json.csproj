@@ -7,8 +7,8 @@
     <ProjectGuid>{955B96F2-6AFB-4C2F-AAA5-9BFD6DDCB3BD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Newtonsoft.Json</RootNamespace>
-    <AssemblyName>Newtonsoft.Json</AssemblyName>
+    <RootNamespace>Mapbox.Json</RootNamespace>
+    <AssemblyName>Mapbox.Json</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

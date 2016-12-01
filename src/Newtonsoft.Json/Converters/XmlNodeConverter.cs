@@ -32,19 +32,19 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 using System.Reflection;
-using Newtonsoft.Json.Serialization;
+using Mapbox.Json.Serialization;
 #if !(NET20 || PORTABLE40)
 using System.Xml.Linq;
 #endif
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 
 #endif
 
-namespace Newtonsoft.Json.Converters
+namespace Mapbox.Json.Converters
 {
 
     #region XmlNodeWrappers

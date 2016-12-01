@@ -34,22 +34,22 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Tests.TestObjects;
-using Newtonsoft.Json.Tests.Serialization;
+using Mapbox.Json.Serialization;
+using Mapbox.Json.Utilities;
+using Mapbox.Json.Tests.TestObjects;
+using Mapbox.Json.Tests.Serialization;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 
 #endif
 
-namespace Newtonsoft.Json.Tests.Utilities
+namespace Mapbox.Json.Tests.Utilities
 {
     [TestFixture]
     public class DynamicReflectionDelegateFactoryTests : TestFixtureBase
@@ -107,7 +107,7 @@ namespace Newtonsoft.Json.Tests.Utilities
                 Func<object, object> setter = DynamicReflectionDelegateFactory.Instance.CreateGet<object>(typeof(Movie).GetProperty("Name"));
 
                 setter(p);
-            }, "Unable to cast object of type 'Newtonsoft.Json.Tests.TestObjects.Person' to type 'Newtonsoft.Json.Tests.TestObjects.Movie'.");
+            }, "Unable to cast object of type 'Mapbox.Json.Tests.TestObjects.Person' to type 'Mapbox.Json.Tests.TestObjects.Movie'.");
         }
 
         [Test]
@@ -127,7 +127,7 @@ namespace Newtonsoft.Json.Tests.Utilities
                 setter(p, "Hi");
 
                 Assert.AreEqual(p.Name, "Hi");
-            }, "Unable to cast object of type 'Newtonsoft.Json.Tests.TestObjects.Person' to type 'Newtonsoft.Json.Tests.TestObjects.Movie'.");
+            }, "Unable to cast object of type 'Mapbox.Json.Tests.TestObjects.Person' to type 'Mapbox.Json.Tests.TestObjects.Movie'.");
         }
 
         [Test]

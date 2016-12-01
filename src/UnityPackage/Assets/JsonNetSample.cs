@@ -2,8 +2,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Mapbox.Json;
+using Mapbox.Json.Linq;
 
 public class JsonNetSample : MonoBehaviour
 {

@@ -1,14 +1,14 @@
 ﻿#if NO_JSONLINQ
 
 // Dummy namespace
-namespace Newtonsoft.Json.Linq
+namespace Mapbox.Json.Linq
 {
     class Dummy { }
 }
 
 #else
 
-namespace Newtonsoft.Json.Linq
+namespace Mapbox.Json.Linq
 {
     /// <summary>
     /// Specifies how JSON comments are handled when loading JSON.

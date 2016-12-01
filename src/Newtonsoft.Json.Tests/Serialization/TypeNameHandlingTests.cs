@@ -24,7 +24,7 @@
 #endregion
 
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 #endif
@@ -34,15 +34,15 @@ using System.Collections.ObjectModel;
 using System.Dynamic;
 #endif
 using System.Text;
-using Newtonsoft.Json.Tests.Linq;
+using Mapbox.Json.Tests.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization.Formatters;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Linq;
+using Mapbox.Json.Serialization;
+using Mapbox.Json.Tests.TestObjects;
 #if NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -50,16 +50,16 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 using System.Net;
 using System.Runtime.Serialization;
 using System.IO;
 
-namespace Newtonsoft.Json.Tests.Serialization
+namespace Mapbox.Json.Tests.Serialization
 {
     [TestFixture]
     public class TypeNameHandlingTests : TestFixtureBase
@@ -142,7 +142,7 @@ namespace Newtonsoft.Json.Tests.Serialization
 
             StringAssert.AreEqual(@"{
   ""movie"": {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.Movie, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.Movie, Mapbox.Json.Tests"",
     ""Name"": ""Die Hard"",
     ""Description"": null,
     ""Classification"": null,
@@ -170,7 +170,7 @@ namespace Newtonsoft.Json.Tests.Serialization
   {
     ""Key"": ""movie"",
     ""Value"": {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.Movie, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.Movie, Mapbox.Json.Tests"",
       ""Name"": ""Die Hard"",
       ""Description"": null,
       ""Classification"": null,
@@ -212,7 +212,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             var result = sw.ToString();
 
             StringAssert.AreEqual(@"{
-  ""$type"": ""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",
+  ""$type"": ""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",
   ""HourlyWage"": 0.0,
   ""Name"": null,
   ""BirthDate"": ""0001-01-01T00:00:00"",
@@ -237,7 +237,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             });
 
             StringAssert.AreEqual(@"{
-  ""$type"": ""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",
+  ""$type"": ""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",
   ""HourlyWage"": 0.0,
   ""Name"": null,
   ""BirthDate"": ""0001-01-01T00:00:00"",
@@ -254,7 +254,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             });
 
             StringAssert.AreEqual(@"{
-  ""$type"": ""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",
+  ""$type"": ""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",
   ""HourlyWage"": 0.0,
   ""Name"": null,
   ""BirthDate"": ""0001-01-01T00:00:00"",
@@ -270,7 +270,7 @@ namespace Newtonsoft.Json.Tests.Serialization
                 TypeNameHandling = TypeNameHandling.Auto
             });
 
-            StringAssert.AreEqual(@"{""$type"":""Newtonsoft.Json.Tests.TestObjects.WagePerson, Newtonsoft.Json.Tests"",""HourlyWage"":0.0,""Name"":null,""BirthDate"":""0001-01-01T00:00:00"",""LastModified"":""0001-01-01T00:00:00""}", json);
+            StringAssert.AreEqual(@"{""$type"":""Mapbox.Json.Tests.TestObjects.WagePerson, Mapbox.Json.Tests"",""HourlyWage"":0.0,""Name"":null,""BirthDate"":""0001-01-01T00:00:00"",""LastModified"":""0001-01-01T00:00:00""}", json);
         }
 
         public class Wrapper
@@ -534,7 +534,7 @@ namespace Newtonsoft.Json.Tests.Serialization
         {
             string json = @"{
   ""$id"": ""1"",
-  ""$type"": ""Newtonsoft.Json.Tests.TestObjects.Employee"",
+  ""$type"": ""Mapbox.Json.Tests.TestObjects.Employee"",
   ""Name"": ""Name!"",
   ""Manager"": null
 }";
@@ -545,7 +545,7 @@ namespace Newtonsoft.Json.Tests.Serialization
                 {
                     TypeNameHandling = TypeNameHandling.Objects
                 });
-            }, "Type specified in JSON 'Newtonsoft.Json.Tests.TestObjects.Employee' was not resolved. Path '$type', line 3, position 55.");
+            }, "Type specified in JSON 'Mapbox.Json.Tests.TestObjects.Employee' was not resolved. Path '$type', line 3, position 55.");
         }
 
         public interface ICorrelatedMessage
@@ -724,7 +724,7 @@ namespace Newtonsoft.Json.Tests.Serialization
         {
             string json = @"{
   ""$id"": ""1"",
-  ""$type"": ""Newtonsoft.Json.Tests.TestObjects.Employee"",
+  ""$type"": ""Mapbox.Json.Tests.TestObjects.Employee"",
   ""Name"": ""Name!""
 }";
 
@@ -753,7 +753,7 @@ namespace Newtonsoft.Json.Tests.Serialization
         [Test]
         public void SerializeUsingCustomBinder()
         {
-            TypeNameSerializationBinder binder = new TypeNameSerializationBinder("Newtonsoft.Json.Tests.Serialization.{0}, Newtonsoft.Json.Tests");
+            TypeNameSerializationBinder binder = new TypeNameSerializationBinder("Mapbox.Json.Tests.Serialization.{0}, Mapbox.Json.Tests");
 
             IList<object> values = new List<object>
             {
@@ -804,7 +804,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             IList<object> newValues = JsonConvert.DeserializeObject<IList<object>>(json, new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.Auto,
-                Binder = new TypeNameSerializationBinder("Newtonsoft.Json.Tests.Serialization.{0}, Newtonsoft.Json.Tests")
+                Binder = new TypeNameSerializationBinder("Mapbox.Json.Tests.Serialization.{0}, Mapbox.Json.Tests")
             });
 
             CustomAssert.IsInstanceOfType(typeof(Customer), newValues[0]);
@@ -929,7 +929,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             // {
             //   "Address": "http://www.google.com",
             //   "Body": {
-            //     "$type": "Newtonsoft.Json.Tests.Serialization.SearchDetails, Newtonsoft.Json.Tests",
+            //     "$type": "Mapbox.Json.Tests.Serialization.SearchDetails, Mapbox.Json.Tests",
             //     "Query": "Json.NET",
             //     "Language": "en-us"
             //   }
@@ -1270,11 +1270,11 @@ namespace Newtonsoft.Json.Tests.Serialization
             string json = JsonConvert.SerializeObject(l, Formatting.Indented);
             StringAssert.AreEqual(@"[
   {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
     ""MyProperty"": 0
   },
   {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.Employee, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.Employee, Mapbox.Json.Tests"",
     ""FirstName"": null,
     ""LastName"": null,
     ""BirthDate"": ""2000-12-12T12:12:12Z"",
@@ -1305,7 +1305,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             string json = JsonConvert.SerializeObject(l, Formatting.Indented);
             StringAssert.AreEqual(@"{
   ""First"": {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
     ""MyProperty"": 1
   },
   ""Second"": ""String!"",
@@ -1335,7 +1335,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             string json = JsonConvert.SerializeObject(o1, Formatting.Indented);
             string expected = @"{
   ""Object1"": {
-    ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
     ""MyProperty"": 1
   },
   ""Object2"": 123,
@@ -1376,7 +1376,7 @@ namespace Newtonsoft.Json.Tests.Serialization
     1,
     ""two"",
     {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     }
   ]
@@ -1414,7 +1414,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             StringAssert.AreEqual(@"{
   ""Data"": [
     {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     {
@@ -1439,14 +1439,14 @@ namespace Newtonsoft.Json.Tests.Serialization
             json = @"{
   ""Data"": [
     {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     {
       ""$type"": ""System.Collections.Generic.List`1[[System.Object, mscorlib]], mscorlib"",
       ""$values"": [
         {
-          ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+          ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
           ""MyProperty"": 1
         }
       ]
@@ -1493,7 +1493,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             StringAssert.AreEqual(@"{
   ""Data"": {
     ""one"": {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     ""two"": {
@@ -1516,13 +1516,13 @@ namespace Newtonsoft.Json.Tests.Serialization
             json = @"{
   ""Data"": {
     ""one"": {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     ""two"": {
       ""$type"": ""System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[System.Object, mscorlib]], mscorlib"",
       ""one"": {
-        ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+        ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
         ""MyProperty"": 1
       }
     }
@@ -1576,7 +1576,7 @@ namespace Newtonsoft.Json.Tests.Serialization
       ]
     },
     ""Prop2"": {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     ""Prop3"": 3,
@@ -1624,11 +1624,11 @@ namespace Newtonsoft.Json.Tests.Serialization
             StringAssert.AreEqual(@"{
   ""Data"": {
     ""one"": {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     ""two"": {
-      ""$type"": ""Newtonsoft.Json.Tests.Linq.DynamicDictionary, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.Linq.DynamicDictionary, Mapbox.Json.Tests"",
       ""one"": {
         ""MyProperty"": 2
       }
@@ -1651,13 +1651,13 @@ namespace Newtonsoft.Json.Tests.Serialization
             json = @"{
   ""Data"": {
     ""one"": {
-      ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
       ""MyProperty"": 1
     },
     ""two"": {
-      ""$type"": ""Newtonsoft.Json.Tests.Linq.DynamicDictionary, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.Linq.DynamicDictionary, Mapbox.Json.Tests"",
       ""one"": {
-        ""$type"": ""Newtonsoft.Json.Tests.TestObjects.TestComponentSimple, Newtonsoft.Json.Tests"",
+        ""$type"": ""Mapbox.Json.Tests.TestObjects.TestComponentSimple, Mapbox.Json.Tests"",
         ""MyProperty"": 2
       }
     }
@@ -1724,7 +1724,7 @@ namespace Newtonsoft.Json.Tests.Serialization
 
             StringAssert.AreEqual(@"{
   ""c"": {
-    ""$type"": ""Newtonsoft.Json.Tests.Serialization.MyChild, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.Serialization.MyChild, Mapbox.Json.Tests"",
     ""p"": ""string!""
   }
 }", json);
@@ -1759,7 +1759,7 @@ namespace Newtonsoft.Json.Tests.Serialization
 
             StringAssert.AreEqual(@"{
   ""c"": {
-    ""$type"": ""Newtonsoft.Json.Tests.Serialization.MyChildList, Newtonsoft.Json.Tests"",
+    ""$type"": ""Mapbox.Json.Tests.Serialization.MyChildList, Mapbox.Json.Tests"",
     ""$values"": [
       ""string!""
     ]
@@ -1799,7 +1799,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             StringAssert.AreEqual(@"{
   ""ParentProp"": {
     ""c"": {
-      ""$type"": ""Newtonsoft.Json.Tests.Serialization.MyChild, Newtonsoft.Json.Tests"",
+      ""$type"": ""Mapbox.Json.Tests.Serialization.MyChild, Mapbox.Json.Tests"",
       ""p"": ""string!""
     }
   }
@@ -1822,7 +1822,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             input.Add(new Stack<string>(new List<string> { "Seven", "Eight", "Nine" }));
 
             string serialized = JsonConvert.SerializeObject(input,
-                Newtonsoft.Json.Formatting.Indented,
+                Mapbox.Json.Formatting.Indented,
                 new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All, TypeNameAssemblyFormat = FormatterAssemblyStyle.Full } // TypeNameHandling.Auto will work
                 );
 
@@ -1843,7 +1843,7 @@ namespace Newtonsoft.Json.Tests.Serialization
         {
             string json = @"{
     ""itemIdentifier"": {
-        ""$type"": ""Newtonsoft.Json.Tests.Serialization.ReportItemKeys, Newtonsoft.Json.Tests"",
+        ""$type"": ""Mapbox.Json.Tests.Serialization.ReportItemKeys, Mapbox.Json.Tests"",
         ""dataType"": 0,
         ""wantedUnitID"": 1,
         ""application"": 3,
@@ -1876,7 +1876,7 @@ namespace Newtonsoft.Json.Tests.Serialization
             StringAssert.AreEqual(@"{
   ""Rows"": {
     ""key"": {
-      ""$type"": ""System.Collections.Generic.List`1[[Newtonsoft.Json.Tests.Serialization.MyInterfaceImplementationType, Newtonsoft.Json.Tests]], mscorlib"",
+      ""$type"": ""System.Collections.Generic.List`1[[Mapbox.Json.Tests.Serialization.MyInterfaceImplementationType, Mapbox.Json.Tests]], mscorlib"",
       ""$values"": [
         {
           ""SomeProperty"": ""property""

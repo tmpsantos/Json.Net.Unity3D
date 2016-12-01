@@ -33,10 +33,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Tests.TestObjects;
 using NUnit.Framework;
 
-namespace Newtonsoft.Json.Tests.Converters
+namespace Mapbox.Json.Tests.Converters
 {
     [TestFixture]
     public class DiscriminatedUnionConverterTests : TestFixtureBase
@@ -238,7 +238,7 @@ namespace Newtonsoft.Json.Tests.Converters
                 10.0, 5.0
             });
 
-            Assert.AreEqual("Newtonsoft.Json.Tests.TestObjects.Shape+Rectangle", value.ToString());
+            Assert.AreEqual("Mapbox.Json.Tests.TestObjects.Shape+Rectangle", value.ToString());
             Assert.AreEqual(10, value.width);
             Assert.AreEqual(5, value.length);
         }

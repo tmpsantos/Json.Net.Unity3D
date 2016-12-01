@@ -34,7 +34,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.FSharp.Core;
 
-namespace Newtonsoft.Json.Tests.TestObjects
+namespace Mapbox.Json.Tests.TestObjects
 {
     [Serializable, DebuggerDisplay("{__DebugDisplay(),nq}"), CompilationMapping(SourceConstructFlags.SumType)]
     public class Shape

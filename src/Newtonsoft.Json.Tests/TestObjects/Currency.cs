@@ -30,7 +30,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace Newtonsoft.Json.Tests.TestObjects
+namespace Mapbox.Json.Tests.TestObjects
 {
     [Serializable, DebuggerDisplay("{__DebugDisplay(),nq}"), CompilationMapping(SourceConstructFlags.SumType)]
     public class Currency

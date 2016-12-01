@@ -25,7 +25,7 @@
 
 using System;
 #if !UNITY3D
-using Newtonsoft.Json.Schema;
+using Mapbox.Json.Schema;
 #endif
 #if NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
@@ -34,13 +34,13 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 
 #endif
 
-namespace Newtonsoft.Json.Tests
+namespace Mapbox.Json.Tests
 {
     [TestFixture]
     public class ExceptionTests : TestFixtureBase
@@ -49,7 +49,7 @@ namespace Newtonsoft.Json.Tests
         public void JsonSerializationException()
         {
             JsonSerializationException exception = new JsonSerializationException();
-            Assert.AreEqual("Exception of type 'Newtonsoft.Json.JsonSerializationException' was thrown.", exception.Message);
+            Assert.AreEqual("Exception of type 'Mapbox.Json.JsonSerializationException' was thrown.", exception.Message);
 
             exception = new JsonSerializationException("Message!");
             Assert.AreEqual("Message!", exception.Message);
@@ -64,7 +64,7 @@ namespace Newtonsoft.Json.Tests
         public void JsonWriterException()
         {
             JsonWriterException exception = new JsonWriterException();
-            Assert.AreEqual("Exception of type 'Newtonsoft.Json.JsonWriterException' was thrown.", exception.Message);
+            Assert.AreEqual("Exception of type 'Mapbox.Json.JsonWriterException' was thrown.", exception.Message);
 
             exception = new JsonWriterException("Message!");
             Assert.AreEqual("Message!", exception.Message);
@@ -79,7 +79,7 @@ namespace Newtonsoft.Json.Tests
         public void JsonReaderException()
         {
             JsonReaderException exception = new JsonReaderException();
-            Assert.AreEqual("Exception of type 'Newtonsoft.Json.JsonReaderException' was thrown.", exception.Message);
+            Assert.AreEqual("Exception of type 'Mapbox.Json.JsonReaderException' was thrown.", exception.Message);
 
             exception = new JsonReaderException("Message!");
             Assert.AreEqual("Message!", exception.Message);
@@ -96,7 +96,7 @@ namespace Newtonsoft.Json.Tests
         public void JsonSchemaException()
         {
             JsonSchemaException exception = new JsonSchemaException();
-            Assert.AreEqual("Exception of type 'Newtonsoft.Json.Schema.JsonSchemaException' was thrown.", exception.Message);
+            Assert.AreEqual("Exception of type 'Mapbox.Json.Schema.JsonSchemaException' was thrown.", exception.Message);
 
             exception = new JsonSchemaException("Message!");
             Assert.AreEqual("Message!", exception.Message);

@@ -26,7 +26,7 @@
 using System;
 using System.IO;
 
-namespace Newtonsoft.Json.Utilities
+namespace Mapbox.Json.Utilities
 {
     internal class Base64Encoder
     {

@@ -28,14 +28,14 @@ using System;
 #if NO_BSON
 
 // Dummy namespace
-namespace Newtonsoft.Json.Bson
+namespace Mapbox.Json.Bson
 {
     class Dummy { }
 }
 
 #else
 
-namespace Newtonsoft.Json.Bson
+namespace Mapbox.Json.Bson
 {
     internal enum BsonBinaryType : byte
     {

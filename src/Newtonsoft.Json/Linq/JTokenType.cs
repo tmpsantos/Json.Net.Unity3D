@@ -25,7 +25,7 @@
 
 #if !NO_JSONLINQ
 
-namespace Newtonsoft.Json.Linq
+namespace Mapbox.Json.Linq
 {
     /// <summary>
     /// Specifies the type of token.

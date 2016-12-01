@@ -30,7 +30,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json.Converters;
+using Mapbox.Json.Converters;
 #if NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -38,13 +38,13 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Tests.TestObjects;
+using Mapbox.Json.Tests.TestObjects;
 
-namespace Newtonsoft.Json.Tests.Converters
+namespace Mapbox.Json.Tests.Converters
 {
     [TestFixture]
     public class StringEnumConverterTests : TestFixtureBase
@@ -377,7 +377,7 @@ namespace Newtonsoft.Json.Tests.Converters
                 var serializer = new JsonSerializer();
                 serializer.Converters.Add(new StringEnumConverter());
                 serializer.Deserialize<Bucket>(new JsonTextReader(new StringReader(json)));
-            }, @"Error converting value ""Three"" to type 'Newtonsoft.Json.Tests.Converters.StringEnumConverterTests+MyEnum'. Path 'Value', line 1, position 19.");
+            }, @"Error converting value ""Three"" to type 'Mapbox.Json.Tests.Converters.StringEnumConverterTests+MyEnum'. Path 'Value', line 1, position 19.");
         }
 
         public class Bucket
@@ -404,7 +404,7 @@ namespace Newtonsoft.Json.Tests.Converters
             }
             catch (JsonSerializationException ex)
             {
-                Assert.AreEqual("Error converting value 123 to type 'Newtonsoft.Json.Tests.Converters.StringEnumConverterTests+MyEnum'. Path 'Value', line 1, position 15.", ex.Message);
+                Assert.AreEqual("Error converting value 123 to type 'Mapbox.Json.Tests.Converters.StringEnumConverterTests+MyEnum'. Path 'Value', line 1, position 15.", ex.Message);
                 Assert.AreEqual(@"Integer value 123 is not allowed. Path 'Value', line 1, position 15.", ex.InnerException.Message);
 
                 return;
@@ -472,7 +472,7 @@ namespace Newtonsoft.Json.Tests.Converters
         {
             ExceptionAssert.Throws<JsonSerializationException>(
                 () => JsonConvert.DeserializeObject<DuplicateNameEnum>("'foo_bar'", new StringEnumConverter()),
-                @"Error converting value ""foo_bar"" to type 'Newtonsoft.Json.Tests.Converters.DuplicateNameEnum'. Path '', line 1, position 9.");
+                @"Error converting value ""foo_bar"" to type 'Mapbox.Json.Tests.Converters.DuplicateNameEnum'. Path '', line 1, position 9.");
         }
 
         // Define other methods and classes here
@@ -514,7 +514,7 @@ namespace Newtonsoft.Json.Tests.Converters
                     Value2 = DuplicateNameEnum2.foo_bar_NOT_USED
                 });
 
-                string xml = @"<DuplicateEnumNameTestClass xmlns=""http://schemas.datacontract.org/2004/07/Newtonsoft.Json.Tests.Converters"" xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"">
+                string xml = @"<DuplicateEnumNameTestClass xmlns=""http://schemas.datacontract.org/2004/07/Mapbox.Json.Tests.Converters"" xmlns:i=""http://www.w3.org/2001/XMLSchema-instance"">
     <Value>foo_bar</Value>
     <Value2>foo_bar</Value2>
 </DuplicateEnumNameTestClass>";
@@ -523,7 +523,7 @@ namespace Newtonsoft.Json.Tests.Converters
 
                 Assert.AreEqual(DuplicateNameEnum.foo_bar, o.Value);
                 Assert.AreEqual(DuplicateNameEnum2.FooBar, o.Value2);
-            }, "Type 'Newtonsoft.Json.Tests.Converters.DuplicateNameEnum' contains two members 'foo_bar' 'and 'FooBar' with the same name 'foo_bar'. Multiple members with the same name in one type are not supported. Consider changing one of the member names using EnumMemberAttribute attribute.");
+            }, "Type 'Mapbox.Json.Tests.Converters.DuplicateNameEnum' contains two members 'foo_bar' 'and 'FooBar' with the same name 'foo_bar'. Multiple members with the same name in one type are not supported. Consider changing one of the member names using EnumMemberAttribute attribute.");
         }
 #endif
     }

@@ -33,9 +33,9 @@ using System.Globalization;
 #if !(PORTABLE || PORTABLE40 || NET35 || NET20)
 using System.Numerics;
 #endif
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 
-namespace Newtonsoft.Json
+namespace Mapbox.Json
 {
     internal enum ReadType
     {

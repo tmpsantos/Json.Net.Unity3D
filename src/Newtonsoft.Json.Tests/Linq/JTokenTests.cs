@@ -29,7 +29,7 @@ using System.Collections.Generic;
 using System.Numerics;
 #endif
 using System.Text;
-using Newtonsoft.Json.Converters;
+using Mapbox.Json.Converters;
 #if NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
@@ -37,21 +37,21 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Linq;
+using Mapbox.Json.Linq;
 using System.IO;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 
 #endif
 
-namespace Newtonsoft.Json.Tests.Linq
+namespace Mapbox.Json.Tests.Linq
 {
     [TestFixture]
     public class JTokenTests : TestFixtureBase
@@ -971,7 +971,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JArray a = new JArray();
                 a.Add(new JProperty("PropertyName"));
-            }, "Can not add Newtonsoft.Json.Linq.JProperty to Newtonsoft.Json.Linq.JArray.");
+            }, "Can not add Mapbox.Json.Linq.JProperty to Mapbox.Json.Linq.JArray.");
         }
 
         [Test]
@@ -981,7 +981,7 @@ namespace Newtonsoft.Json.Tests.Linq
             {
                 JObject o = new JObject();
                 o.Add(5);
-            }, "Can not add Newtonsoft.Json.Linq.JValue to Newtonsoft.Json.Linq.JObject.");
+            }, "Can not add Mapbox.Json.Linq.JValue to Mapbox.Json.Linq.JObject.");
         }
 
         [Test]

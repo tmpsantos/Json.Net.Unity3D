@@ -28,13 +28,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Runtime.Serialization;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 #endif
 using System.Reflection;
 
-namespace Newtonsoft.Json.Utilities
+namespace Mapbox.Json.Utilities
 {
     internal static class EnumUtils
     {

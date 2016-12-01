@@ -26,9 +26,9 @@
 #if !(DOTNET || PORTABLE40 || PORTABLE)
 using System;
 using System.Data;
-using Newtonsoft.Json.Serialization;
+using Mapbox.Json.Serialization;
 
-namespace Newtonsoft.Json.Converters
+namespace Mapbox.Json.Converters
 {
     /// <summary>
     /// Converts a <see cref="DataSet"/> to and from JSON.

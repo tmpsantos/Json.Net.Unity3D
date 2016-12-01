@@ -26,7 +26,7 @@
 using System;
 using System.Collections;
 #if !UNITY3D
-using Newtonsoft.Json.Schema;
+using Mapbox.Json.Schema;
 #endif
 #if !(NET35 || NET20 || PORTABLE || PORTABLE40)
 using System.Collections.Concurrent;
@@ -45,18 +45,18 @@ using System.Security.Permissions;
 #if !UNITY3D
 using System.Xml.Serialization;
 #endif
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Linq;
+using Mapbox.Json.Converters;
+using Mapbox.Json.Utilities;
+using Mapbox.Json.Linq;
 using System.Runtime.CompilerServices;
 #if NET20
-using Newtonsoft.Json.Utilities.LinqBridge;
+using Mapbox.Json.Utilities.LinqBridge;
 #else
 using System.Linq;
 
 #endif
 
-namespace Newtonsoft.Json.Serialization
+namespace Mapbox.Json.Serialization
 {
     internal struct ResolverContractKey : IEquatable<ResolverContractKey>
     {

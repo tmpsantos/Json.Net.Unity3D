@@ -29,10 +29,10 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Security;
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 using Windows.Data.Json;
 
-namespace Newtonsoft.Json.Converters
+namespace Mapbox.Json.Converters
 {
     /// <summary>
     /// Converts a <see cref="IJsonValue"/> to and from JSON.

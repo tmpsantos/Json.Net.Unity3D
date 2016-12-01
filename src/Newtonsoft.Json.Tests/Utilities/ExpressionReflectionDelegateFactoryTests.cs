@@ -36,16 +36,16 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 #elif DNXCORE50
 using Xunit;
 using Test = Xunit.FactAttribute;
-using Assert = Newtonsoft.Json.Tests.XUnitAssert;
+using Assert = Mapbox.Json.Tests.XUnitAssert;
 #else
 using NUnit.Framework;
 #endif
-using Newtonsoft.Json.Serialization;
-using Newtonsoft.Json.Utilities;
-using Newtonsoft.Json.Tests.TestObjects;
-using Newtonsoft.Json.Tests.Serialization;
+using Mapbox.Json.Serialization;
+using Mapbox.Json.Utilities;
+using Mapbox.Json.Tests.TestObjects;
+using Mapbox.Json.Tests.Serialization;
 
-namespace Newtonsoft.Json.Tests.Utilities
+namespace Mapbox.Json.Tests.Utilities
 {
     [TestFixture]
     public class ExpressionReflectionDelegateFactoryTests : TestFixtureBase
@@ -157,7 +157,7 @@ namespace Newtonsoft.Json.Tests.Utilities
 
             Movie m = new Movie();
             object result = method(m);
-            Assert.AreEqual("Newtonsoft.Json.Tests.TestObjects.Movie", result);
+            Assert.AreEqual("Mapbox.Json.Tests.TestObjects.Movie", result);
 
             method = ExpressionReflectionDelegateFactory.Instance.CreateMethodCall<object>(TestReflectionUtils.GetMethod(typeof(Movie), "Equals"));
 
@@ -298,7 +298,7 @@ namespace Newtonsoft.Json.Tests.Utilities
                 },
                 new[]
                 {
-                    "Unable to cast object of type 'Newtonsoft.Json.Tests.TestObjects.Person' to type 'Newtonsoft.Json.Tests.TestObjects.Movie'.",
+                    "Unable to cast object of type 'Mapbox.Json.Tests.TestObjects.Person' to type 'Mapbox.Json.Tests.TestObjects.Movie'.",
                     "Cannot cast from source type to destination type." // mono
                 });
         }
@@ -324,7 +324,7 @@ namespace Newtonsoft.Json.Tests.Utilities
                 },
                 new[]
                 {
-                    "Unable to cast object of type 'Newtonsoft.Json.Tests.TestObjects.Person' to type 'Newtonsoft.Json.Tests.TestObjects.Movie'.",
+                    "Unable to cast object of type 'Mapbox.Json.Tests.TestObjects.Person' to type 'Mapbox.Json.Tests.TestObjects.Movie'.",
                     "Cannot cast from source type to destination type." // mono
                 });
         }

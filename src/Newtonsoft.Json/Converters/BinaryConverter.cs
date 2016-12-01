@@ -29,10 +29,10 @@ using System;
 using System.Data.SqlTypes;
 #endif
 using System.Globalization;
-using Newtonsoft.Json.Utilities;
+using Mapbox.Json.Utilities;
 using System.Collections.Generic;
 
-namespace Newtonsoft.Json.Converters
+namespace Mapbox.Json.Converters
 {
     /// <summary>
     /// Converts a binary value to and from a base 64 string value.
